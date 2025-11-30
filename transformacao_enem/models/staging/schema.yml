@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+
+  - name: dados_brutos_enem
+
+    database: transformacao_enem
+    schema: public
+    
+    tables:
+      - name: MICRODADOS_ENEM_2021
+      - name: MICRODADOS_ENEM_2022
+      - name: MICRODADOS_ENEM_2023
