@@ -9,6 +9,31 @@ with enem AS (
 SELECT 
     "NU_INSCRICAO" AS inscricao,
     "NU_ANO" AS ano,
+    
+    CASE "TP_FAIXA_ETARIA"
+		WHEN 1 THEN 'Menos que 17 anos'
+		WHEN 2 THEN '17 anos'
+		WHEN 3 THEN '18 anos'
+		WHEN 4 THEN '19 anos'
+		WHEN 5 THEN '20 anos'
+		WHEN 6 THEN '21 anos'
+		WHEN 7 THEN '22 anos'
+		WHEN 8 THEN '23 anos'
+		WHEN 9 THEN '24 anos'
+		WHEN 10 THEN '25 anos'
+		WHEN 11 THEN 'entre 26 e 30 anos'
+		WHEN 12 THEN 'entre 31 e 35 anos'
+		WHEN 13 THEN 'entre 36 e 40 anos'
+		WHEN 14 THEN 'entre 41 e 45 anos'
+		WHEN 15 THEN 'entre 46 e 50 anos'
+		WHEN 16 THEN 'entre 51 e 55 anos'
+		WHEN 17 THEN 'entre 56 e 60 anos'
+		WHEN 18 THEN 'entre 61 e 65 anos'
+		WHEN 19 THEN 'entre 66 e 70 anos'
+		WHEN 20 THEN 'mais que 70 anos'
+    
+    END as idade,
+
     "TP_SEXO" AS sexo,
 
     CASE "TP_ESTADO_CIVIL"
@@ -44,6 +69,71 @@ SELECT
         WHEN 4 THEN 'não inciado'
     END as status_conclusao,
 
+    CASE 
+    WHEN "NU_ANO" = 2023 THEN
+        CASE CAST("TP_ANO_CONCLUIU" AS integer)
+            WHEN 0 THEN 'não informado'
+            WHEN 1 THEN '2022'
+            WHEN 2 THEN '2021'
+            WHEN 3 THEN '2020'
+            WHEN 4 THEN '2019'
+            WHEN 5 THEN '2018'
+            WHEN 6 THEN '2017'
+            WHEN 7 THEN '2016'
+            WHEN 8 THEN '2015'
+            WHEN 9 THEN '2014'
+            WHEN 10 THEN '2013'
+            WHEN 11 THEN '2012'
+            WHEN 12 THEN '2011'
+            WHEN 13 THEN '2010'
+            WHEN 14 THEN '2009'
+            WHEN 15 THEN '2008'
+            WHEN 16 THEN '2007'
+            WHEN 17 THEN 'antes de 2007'
+        END
+
+    WHEN "NU_ANO" = 2022 THEN
+        CASE CAST("TP_ANO_CONCLUIU" AS integer)
+            WHEN 0 THEN 'não informado'
+            WHEN 1 THEN '2021'
+            WHEN 2 THEN '2020'
+            WHEN 3 THEN '2019'
+            WHEN 4 THEN '2018'
+            WHEN 5 THEN '2017'
+            WHEN 6 THEN '2016'
+            WHEN 7 THEN '2015'
+            WHEN 8 THEN '2014'
+            WHEN 9 THEN '2013'
+            WHEN 10 THEN '2012'
+            WHEN 11 THEN '2011'
+            WHEN 12 THEN '2010'
+            WHEN 13 THEN '2009'
+            WHEN 14 THEN '2008'
+            WHEN 15 THEN '2007'
+            WHEN 16 THEN 'antes de 2007'
+        END
+
+    WHEN "NU_ANO" = 2021 THEN
+        CASE CAST("TP_ANO_CONCLUIU" AS integer)
+            WHEN 0 THEN 'não informado'
+            WHEN 1 THEN '2020'
+            WHEN 2 THEN '2019'
+            WHEN 3 THEN '2018'
+            WHEN 4 THEN '2017'
+            WHEN 5 THEN '2016'
+            WHEN 6 THEN '2015'
+            WHEN 7 THEN '2014'
+            WHEN 8 THEN '2013'
+            WHEN 9 THEN '2012'
+            WHEN 10 THEN '2011'
+            WHEN 11 THEN '2010'
+            WHEN 12 THEN '2009'
+            WHEN 13 THEN '2008'
+            WHEN 14 THEN '2007'
+            WHEN 15 THEN 'antes de 2007'
+        END
+    END AS ano_conclusao,
+
     CASE "TP_ESCOLA"
         WHEN 1 THEN 'Não respondeu'
         WHEN 2 THEN 'Pública'
@@ -77,6 +167,19 @@ SELECT
 
     "SG_UF_PROVA" AS uf_prova,
 
+    CASE "TP_PRESENCA_MT"
+		WHEN 0 THEN 'faltou à prova'
+		WHEN 1 THEN 'presente na prova'
+		WHEN 2 THEN 'eliminado da prova'
+	END AS presenca_1d
+    
+    CASE "TP_PRESENCA_CN"
+		WHEN 0 THEN 'faltou à prova'
+		WHEN 1 THEN 'presente na prova'
+		WHEN 2 THEN 'eliminado da prova'
+	END AS presenca_2d,
+
+
     CASE 
         WHEN "CO_PROVA_LC" IN (889, 890, 891, 892, 1065, 1066, 1067, 1068, 1201, 1202, 1203, 1204) THEN 'Regular'
         WHEN "CO_PROVA_LC" IN (895, 1207) THEN 'Braile'
@@ -108,6 +211,19 @@ SELECT
     COALESCE("NU_NOTA_LC", 0) AS nota_lc,
     COALESCE("NU_NOTA_MT", 0) AS nota_mt,
     COALESCE("NU_NOTA_REDACAO", 0) AS nota_redacao,
+
+    CASE "Q001"
+        WHEN 'A' THEN 'Nunca estudou'
+        WHEN 'B' THEN 'Não completou o ensino fundamental 1'
+        WHEN 'C' THEN 'Não completou o ensino fundamental 2'
+        WHEN 'D' THEN 'Não completou o ensino médio'
+        WHEN 'E' THEN 'Não completou a faculdade'
+        WHEN 'F' THEN 'Não completou a pós-graduação'
+        WHEN 'G' THEN 'Completou a pós-graduação'
+        WHEN 'H' THEN 'Não sei'
+        ELSE 'Não informado'
+    END as escolaridade_pai,
+
     
     CASE "Q002"
         WHEN 'A' THEN 'Nunca estudou'
