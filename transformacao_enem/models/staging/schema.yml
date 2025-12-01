@@ -4,7 +4,7 @@ sources:
 
   - name: dados_brutos_enem
 
-    database: transformacao_enem
+    #database: transformacao_enem
     schema: public
     
     tables:
