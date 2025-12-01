@@ -190,6 +190,7 @@ SELECT
         WHEN "CO_PROVA_LC" IN (1025, 1026, 1027, 1028, 1032) THEN 'Segunda oportunidade'
         WHEN "CO_PROVA_LC" IN (1205, 1206) THEN 'Ampliada'
         WHEN "CO_PROVA_LC" = 0 THEN 'Não entregue' 
+        ELSE 'Não entregue'
         
     END AS tp_aplicacao_dia_1,
 
@@ -203,6 +204,7 @@ SELECT
         WHEN "CO_PROVA_MT" IN (1035, 1036, 1037, 1038, 1042) THEN 'Segunda oportunidade'
         WHEN "CO_PROVA_MT" IN (1215, 1216) THEN 'Ampliada'
         WHEN "CO_PROVA_MT" = 0 THEN 'Não entregue' 
+        ELSE 'Não entregue'
         
     END AS tp_aplicacao_dia_2,
 
