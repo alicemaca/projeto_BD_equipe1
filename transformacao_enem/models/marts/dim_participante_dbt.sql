@@ -14,3 +14,8 @@ perfis_unicos AS (
         nacionalidade
     FROM base
 )
+
+SELECT
+    ROW_NUMBER() OVER (ORDER BY inscricao),
+    *
+FROM perfis_unicos

@@ -14,12 +14,12 @@ perfis_socioeconomicos_unicos AS (
         qtd_carro,
         tem_motocicleta,
         tem_celular,
-        qtd_computadores,
+        qtd_computador,
         tem_internet
     FROM base
 )
 
 SELECT
-    ROW_NUMBER() OVER (ORDER BY renda_mensal, uf_escola) AS id_perfil_socioeconomico_sk,
+    ROW_NUMBER() OVER (ORDER BY renda_mensal) AS id_perfil_socioeconomico_sk,
     *
 FROM perfis_socioeconomicos_unicos
