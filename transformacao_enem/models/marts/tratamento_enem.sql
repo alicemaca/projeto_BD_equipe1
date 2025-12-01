@@ -171,7 +171,7 @@ SELECT
 		WHEN 0 THEN 'faltou à prova'
 		WHEN 1 THEN 'presente na prova'
 		WHEN 2 THEN 'eliminado da prova'
-	END AS presenca_1d
+	END AS presenca_1d,
     
     CASE "TP_PRESENCA_CN"
 		WHEN 0 THEN 'faltou à prova'
