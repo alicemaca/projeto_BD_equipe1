@@ -149,6 +149,14 @@ SELECT
         WHEN 'D' THEN 'Sim, pelo menos cinco dias por semana'
     END as tem_empregado_domestico,
 
+    CASE "Q010"
+        WHEN 'A' THEN 'Não'
+        WHEN 'B' THEN 'Sim, um'
+        WHEN 'C' THEN 'Sim, dois'
+        WHEN 'D' THEN 'Sim, três'
+        WHEN 'E' THEN 'Sim, quatro ou mais'
+    END as qtd_carro,
+
     CASE "Q022"
         WHEN 'A' THEN 'Não'
         WHEN 'B' THEN 'Sim, um'
