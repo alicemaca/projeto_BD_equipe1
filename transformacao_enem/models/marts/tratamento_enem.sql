@@ -121,6 +121,8 @@ SELECT
         ELSE 'Não informado'
     END as escolaridade_mae,
 
+    CAST(COALESCE("Q005", 1) AS INTEGER) AS qtde_pessoas_casa,
+
     CASE "Q006"
         WHEN 'A' THEN 'Nenhuma renda'
         WHEN 'B' THEN 'Até R$ 1.320,00'
@@ -157,6 +159,15 @@ SELECT
         WHEN 'E' THEN 'Sim, quatro ou mais'
     END as qtd_carro,
 
+    CASE "Q011"
+        WHEN 'A' THEN 'Não'
+        WHEN 'B' THEN 'Sim, uma'
+        WHEN 'C' THEN 'Sim, duas'
+        WHEN 'D' THEN 'Sim, três'
+        WHEN 'E' THEN 'Sim, quatro ou mais'
+        ELSE 'Não informado'
+    END AS tem_motocicleta,
+
     CASE "Q022"
         WHEN 'A' THEN 'Não'
         WHEN 'B' THEN 'Sim, um'
@@ -171,6 +182,12 @@ SELECT
         WHEN 'C' THEN 'Sim, dois.'
         WHEN 'D' THEN 'Sim, três.'
         WHEN 'E' THEN 'Sim, quatro ou mais.'
-    END as qtd_computador
+    END as qtd_computador,
+
+    CASE "Q025"
+        WHEN 'A' THEN 'Não'
+        WHEN 'B' THEN 'Sim'
+        ELSE 'Não informado'
+    END AS tem_internet
 
 FROM enem
