@@ -56,6 +56,15 @@ SELECT
         ELSE 'Não informado'
     END as ensino,
 
+    CASE "IN_TREINEIRO"
+        WHEN 1 THEN 'Sim'
+        WHEN 0 THEN 'Não'
+    END as eh_treineiro,
+
+    COALESCE("NO_MUNICIPIO_ESC", 'NÃO INFORMADO') AS municipio_escola,
+
+    COALESCE("SG_UF_ESC", 'NÃO INFORMADO') AS uf_escola,
+
     CASE CAST(COALESCE("TP_DEPENDENCIA_ADM_ESC", 0) AS integer) 
         WHEN 1 THEN 'Federal'
         WHEN 2 THEN 'Estadual'
