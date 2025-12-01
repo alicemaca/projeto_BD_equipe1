@@ -10,8 +10,24 @@ SELECT
     "NU_INSCRICAO" AS inscricao,
     "NU_ANO" AS ano,
     "TP_SEXO" AS sexo,
-    "NO_MUNICIPIO_PROVA" AS municipio_prova,
-    "SG_UF_PROVA" AS uf_prova,
+
+    CASE "TP_ESTADO_CIVIL"
+        WHEN 0 THEN 'Não Informado'
+        WHEN 1 THEN 'Solteiro'
+        WHEN 2 THEN 'União Estável'
+        WHEN 3 THEN 'Divorciado'
+        WHEN 4 THEN 'Viúvo'
+    END as estado_civil,
+
+    CASE "TP_COR_RACA"
+        WHEN 0 THEN 'Não declarado'
+        WHEN 1 THEN 'Branca'
+        WHEN 2 THEN 'Preta'
+        WHEN 3 THEN 'Parda'
+        WHEN 4 THEN 'Amarela'
+        WHEN 5 THEN 'Indígena'
+        WHEN 6 THEN 'Não dispõe da informação'
+    END as cor_raca,
 
     CASE "TP_NACIONALIDADE"
         WHEN 0 THEN 'não informado'
@@ -27,6 +43,24 @@ SELECT
         WHEN 3 THEN 'cursando'
         WHEN 4 THEN 'não inciado'
     END as status_conclusao,
+
+    CASE "TP_ESCOLA"
+        WHEN 1 THEN 'Não respondeu'
+        WHEN 2 THEN 'Pública'
+        WHEN 3 THEN 'Privada'
+    END as escola,
+
+    CASE CAST(COALESCE("TP_DEPENDENCIA_ADM_ESC", 0) AS integer) 
+        WHEN 1 THEN 'Federal'
+        WHEN 2 THEN 'Estadual'
+        WHEN 3 THEN 'Municipal'
+        WHEN 4 THEN 'Privada'
+        ELSE 'não informado' 
+    END as dependencia_adm_escola,
+
+    "NO_MUNICIPIO_PROVA" AS municipio_prova,
+
+    "SG_UF_PROVA" AS uf_prova,
 
     CASE "Q002"
         WHEN 'A' THEN 'Nunca estudou'
