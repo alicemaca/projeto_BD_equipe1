@@ -74,6 +74,7 @@ Ao final do pipeline, os dados são organizados em um modelo dimensional, esquem
 ## 👩🏽‍💻Como executar:
 ### Pré-requisitos:
 - Instale Python e PostgreSQL.
+- Instale o git lfs.
 - Clone este repositório.
 - Instale as dependências citadas nos arquivos ELT.ipynb e ETL.ipynb
 ### Configuração de ambiente:
