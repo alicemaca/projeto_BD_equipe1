@@ -78,7 +78,7 @@ Ao final do pipeline, os dados são organizados em um modelo dimensional, esquem
   ```
   git lfs install
   ```
-  *caso o import dos arquivos com o git lfs não funcione, em razão de falta de limite de memória do git lfs do repositório, pois possuimos a conta gratuita, baixe os arquivos nesse link: https://drive.google.com/file/d/13har3NTKfuBaoH29PhIpuatDRhPCU6vT/view?usp=sharing e inclua eles na pasta "notebooks/dados" do seu clone.
+  *caso o import dos arquivos com o git lfs não funcione, em razão de falta de limite de memória do git lfs do repositório, pois possuimos a conta gratuita, baixe os arquivos nesse link: [arquivo](https://drive.google.com/drive/folders/1sh_EMdV9SkNrfatwNt32xAoAhtHJ3Fhs?usp=drive_link) e inclua eles na pasta "notebooks/dados" do seu clone.
 - Clone este repositório.
 - Instale as dependências citadas nos arquivos ELT.ipynb e ETL.ipynb
 ### Configuração de ambiente:
