@@ -167,7 +167,7 @@ SELECT
 
     "SG_UF_PROVA" AS uf_prova,
 
-    CASE "TP_PRESENCA_MT"
+    CASE "TP_PRESENCA_LC"
 		WHEN 0 THEN 'faltou à prova'
 		WHEN 1 THEN 'presente na prova'
 		WHEN 2 THEN 'eliminado da prova'
